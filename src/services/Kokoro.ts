@@ -20,7 +20,7 @@ export class Kokoro implements TTSService {
 	languages: ["en"];
 
 	async getVoices(): Promise<{ id: string; name: string; languages: string[] }[]> {
-		voices = [];
+		var voices = [];
 		for (const voice of tts.list_voices()) {
 			voices.push({
 				id: voice,

@@ -10,7 +10,9 @@ export class ServiceManager {
 	constructor(plugin: TTSPlugin) {
 		this.plugin = plugin;
 		this.services.push(new SpeechSynthesis(this.plugin));
-		//this.services.push(new OpenAI(this));
+		this.services.push(new OpenAI(this));
+		this.services.push(new Kokoro(this));
+
 	}
 
 	public getServices(): TTSService[] {

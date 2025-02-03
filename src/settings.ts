@@ -27,11 +27,11 @@ export interface TTSSettings {
 	services: {
 		openai: {
 			key: string;
-		},
+		};
 		kokoro: {
 			quant: string;
-		}
-	}
+		};
+	};
 }
 
 export const DEFAULT_SETTINGS: TTSSettings = {

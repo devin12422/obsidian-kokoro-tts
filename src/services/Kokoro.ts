@@ -15,9 +15,6 @@ export class Kokoro implements TTSService {
 	currentTime = 0;
 	constructor(plugin: TTSPlugin) {
 		this.plugin = plugin;
-		this.tts = await KokoroTTS.from_pretrained(model_id, {
-			dtype: this.plugin.settings.services.kokoro.quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
-		});
 	}
 
 	languages: ["en"];
@@ -64,7 +61,11 @@ export class Kokoro implements TTSService {
 	}
 
 	async sayWithVoice(text: string, voice: string) : Promise<void> {
-  
+		if (!this.isConfigured()){
+			this.tts = await KokoroTTS.from_pretrained(model_id, {
+				dtype: this.plugin.settings.services.kokoro.quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
+			});
+		}
 		const audioFile =  await tts.generate(text, {
       voice: voice,
     });

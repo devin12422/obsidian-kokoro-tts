@@ -10,14 +10,14 @@ export class Kokoro implements TTSService {
 	plugin: TTSPlugin;
 	id = "kokoro";
 	name = "Kokoro";
-	tts = await KokoroTTS.from_pretrained(model_id, {
-		dtype: this.plugin.settings.services.kokoro.quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
-	});
 	
 	source: AudioBufferSourceNode;
 	currentTime = 0;
 	constructor(plugin: TTSPlugin) {
 		this.plugin = plugin;
+		this.tts = await KokoroTTS.from_pretrained(model_id, {
+			dtype: this.plugin.settings.services.kokoro.quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
+		});
 	}
 
 	languages: ["en"];
@@ -35,6 +35,7 @@ export class Kokoro implements TTSService {
 	}
 
 	isConfigured(): boolean {
+		if(!this.tts)  return false;
 		return true;
 	}
 
@@ -49,6 +50,7 @@ export class Kokoro implements TTSService {
 	}
 
 	isValid(): boolean {
+		if(!this.tts)  return false;
 		return true;
 	}
 

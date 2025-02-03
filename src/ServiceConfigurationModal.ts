@@ -20,6 +20,7 @@ export class ServiceConfigurationModal extends Modal {
 			.setDesc('test')
 			.addDropdown((dropdown) => {
 				dropdown.addOption('openai', 'OpenAI');
+				dropdown.addOption('kokoro', 'Kokoro');
 				dropdown.addOption('microsoft', 'Microsoft Azure');
 
 				dropdown.setValue(service);
@@ -45,7 +46,26 @@ export class ServiceConfigurationModal extends Modal {
 
 
 		}
+		if (service === 'kokoro') {
+			new Setting(contentEl)
+				.setName('Model Data Type')
+				.setDesc('Numerical Datatype')
+				.addDropdown((dropdown) => {
+				dropdown.addOption('fp16', 'FP16');
+				dropdown.addOption('fp32', 'FP32');
+				dropdown.addOption('q4', 'Int4 Quantization');
+				dropdown.addOption('q8', 'Int8 Quantization');
+				dropdown.addOption('q4f16', 'q4f16');
+				
+				dropdown.setValue(this.plugin.settings.services.kokoro.quant).onChange(async value => {
+							this.plugin.settings.services.kokoro.quant = value;
+							await this.plugin.saveSettings();
+					});
 
+			});
+
+
+		}
 	}
 
 	onOpen(): void {

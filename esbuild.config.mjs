@@ -3,6 +3,7 @@ import esbuild from 'esbuild'
 import process from 'process'
 import builtins from 'builtin-modules'
 import fs from 'fs'
+import inlineWorkerPlugin from "esbuild-plugin-inline-worker";
 
 const banner =
 `/*
@@ -21,6 +22,7 @@ const context = await esbuild.context({
 		process: '{}',
   		'import.meta.url': 'import_meta_url'
 	},
+	plugins: [inlineWorkerPlugin()],
 	inject: [path.resolve('import-meta-url-shim.js')],
 	entryPoints: ["src/main.ts"],
 	bundle: true,

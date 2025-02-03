@@ -1,6 +1,8 @@
-import esbuild from "esbuild";
-import process from "process";
-import builtins from "builtin-modules";
+import path from 'path'
+import esbuild from 'esbuild'
+import process from 'process'
+import builtins from 'builtin-modules'
+import fs from 'fs'
 
 const banner =
 `/*

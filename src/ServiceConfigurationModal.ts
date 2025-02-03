@@ -36,9 +36,9 @@ export class ServiceConfigurationModal extends Modal {
 				.setDesc('API key for OpenAI')
 				.addText(async text => {
 					text
-						.setValue(this.plugin.settings.services.openai.key)
+						.setValue(this.plugin.settings.openai_key)
 						.onChange(async value => {
-							this.plugin.settings.services.openai.key = value;
+							this.plugin.settings.openai_key = value;
 							await this.plugin.saveSettings();
 					});
 				})
@@ -55,12 +55,11 @@ export class ServiceConfigurationModal extends Modal {
 				dropdown.addOption('fp32', 'FP32');
 				dropdown.addOption('q8', 'Q8');
 
-				dropdown.setValue(this.plugin.settings.services.kokoro.quant);
+				dropdown.setValue(this.plugin.settings.kokoro_quant);
 
 				dropdown.onChange(async(value) => {
-					this.plugin.settings.services.kokoro.quant = value;
+					this.plugin.settings.kokoro_quant = value;
 					await this.plugin.saveSettings();
-					this.display(value);
 				})
 			});
 			;

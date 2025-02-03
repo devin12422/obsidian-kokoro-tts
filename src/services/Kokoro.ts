@@ -37,7 +37,7 @@ export class Kokoro implements TTSService {
 	}
 
 	isConfigured(): boolean {
-		if(!this.tts)  return false;
+		if( this.tts == null)  return false;
 		return true;
 	}
 
@@ -52,7 +52,7 @@ export class Kokoro implements TTSService {
 	}
 
 	isValid(): boolean {
-		if(!this.tts)  return false;
+		if( this.tts == null)  return false;
 		return true;
 	}
 

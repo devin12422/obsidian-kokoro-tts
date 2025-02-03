@@ -15,6 +15,11 @@ const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
+	define: {
+		process: '{}',
+  		'import.meta.url': 'import_meta_url'
+	},
+	inject: [path.resolve('import-meta-url-shim.js')],
 	entryPoints: ["src/main.ts"],
 	bundle: true,
 	external: [

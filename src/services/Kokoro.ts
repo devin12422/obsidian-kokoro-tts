@@ -24,7 +24,7 @@ export class Kokoro implements TTSService {
 
 	async getVoices(): Promise<{ id: string; name: string; languages: string[] }[]> {
 		voices = [];
-		for voice in tts.list_voices(){
+		for (const voice of tts.list_voices()) {
 			voices.push({
 				id: voice,
 				name: voice,

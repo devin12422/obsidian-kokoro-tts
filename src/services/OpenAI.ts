@@ -52,7 +52,7 @@ export class OpenAI implements TTSService {
 	}
 
 	isConfigured(): boolean {
-		return this.plugin.settings.services.openai.key.length > 0;
+		return this.plugin.settings.openai_key.length > 0;
 	}
 
 	isPaused(): boolean {
@@ -66,7 +66,7 @@ export class OpenAI implements TTSService {
 	}
 
 	isValid(): boolean {
-		return this.plugin.settings.services.openai.key.startsWith('sk-');
+		return this.plugin.settings.openai_key.startsWith('sk-');
 	}
 
 	pause(): void {
@@ -84,7 +84,7 @@ export class OpenAI implements TTSService {
 			url: 'https://api.openai.com/v1/audio/speech',
 			method: 'POST',
 			headers: {
-				'Authorization': 'Bearer ' + this.plugin.settings.services.openai.key,
+				'Authorization': 'Bearer ' + this.plugin.settings.openai_key,
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({

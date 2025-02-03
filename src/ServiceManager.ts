@@ -1,5 +1,8 @@
 import {TTSService} from "./services/TTSService";
 import TTSPlugin from "./main";
+import {OpenAI} from "./services/OpenAI";
+import {Kokoro} from "./services/Kokoro";
+
 import {SpeechSynthesis} from "./services/SpeechSynthesis";
 import {Notice} from "obsidian";
 

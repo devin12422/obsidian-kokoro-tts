@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-tts",
-	"version": "0.5.3",
-	"description": "Text to speech for Obsidian. Hear your notes.",
+	"name": "obsidian-kokoro-tts",
+	"version": "0.5.4",
+	"description": "Text to speech for Obsidian, with Kokoro TTS. Plagarized code.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
@@ -10,9 +10,10 @@
 		"docs": "typedoc"
 	},
 	"keywords": [],
-	"author": "joethei",
+	"author": "devin12422",
 	"license": "GPL-3.0",
 	"dependencies": {
+		"kokoro-js":"1.0.1",
 		"@cospired/i18n-iso-languages": "^3.1.1",
 		"@types/node": "^16.11.6",
 		"builtin-modules": "^3.2.0",

@@ -21,7 +21,12 @@ export class Kokoro implements TTSService {
 
 	async getVoices(): Promise<{ id: string; name: string; languages: string[] }[]> {
 		var voices = [];
-		for (const voice of tts.list_voices()) {
+		if (!this.isConfigured()){
+			this.tts = await KokoroTTS.from_pretrained(model_id, {
+				dtype: this.plugin.settings.services.kokoro.quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
+			});
+		}
+		for (const voice of this.tts.list_voices()) {
 			voices.push({
 				id: voice,
 				name: voice,

@@ -24,14 +24,8 @@ export interface TTSSettings {
 	speakComments: boolean;
     languageVoices: LanguageVoiceMap[];
 	stopPlaybackWhenNoteChanges: boolean;
-	services: {
-		openai: {
-			key: string;
-		};
-		kokoro: {
-			quant: string;
-		};
-	};
+	openai_key: string;
+	kokoro_quant: string;
 }
 
 export const DEFAULT_SETTINGS: TTSSettings = {
@@ -48,14 +42,8 @@ export const DEFAULT_SETTINGS: TTSSettings = {
 	speakComments: false,
     languageVoices: [],
 	stopPlaybackWhenNoteChanges: false,
-	services: {
-		openai: {
-			key: '',
-		},
-		kokoro: {
-			quant: 'fp16',
-		}
-	}
+	openai_key: '',
+	kokoro_quant: 'fp16'
 }
 
 export class TTSSettingsTab extends PluginSettingTab {

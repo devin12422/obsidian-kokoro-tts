@@ -114,7 +114,7 @@ export class TTSSettingsTab extends PluginSettingTab {
                 });
         });
 
-		/*new Setting(containerEl)
+		new Setting(containerEl)
 			.setName("Services")
 			.setHeading();
 
@@ -128,7 +128,7 @@ export class TTSSettingsTab extends PluginSettingTab {
 					.onClick(() => {
 						new ServiceConfigurationModal(this.plugin).open();
 					});
-			});*/
+			});
 
 		new Setting(containerEl)
 			.setName("Language specific voices")

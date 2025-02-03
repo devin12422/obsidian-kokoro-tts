@@ -9,7 +9,6 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "strictNullChecks": true,
     "lib": [
 		"dom",
 		"scripthost",

@@ -22,6 +22,9 @@ export class Kokoro implements TTSService {
 	async getVoices(): Promise<{ id: string; name: string; languages: string[] }[]> {
 		var voices = [];
 		if (!this.isConfigured()){
+			if(this.plugin.settings.kokoro_quant == null){
+				this.plugin.settings.kokoro_quant = "fp16";
+			}
 			this.tts = await KokoroTTS.from_pretrained(model_id, {
 				dtype: this.plugin.settings.kokoro_quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
 			});
@@ -67,6 +70,9 @@ export class Kokoro implements TTSService {
 
 	async sayWithVoice(text: string, voice: string) : Promise<void> {
 		if (!this.isConfigured()){
+			if(this.plugin.settings.kokoro_quant == null){
+				this.plugin.settings.kokoro_quant = "fp16";
+			}
 			this.tts = await KokoroTTS.from_pretrained(model_id, {
 				dtype: this.plugin.settings.kokoro_quant, // Options: "fp32", "fp16", "q8", "q4", "q4f16"
 			});

@@ -1,15 +1,18 @@
 module.exports = {
     root: true,
     parser: "@typescript-eslint/parser",
+    env: { "node": true },
     plugins: ["@typescript-eslint"],
-    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+    extends: [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
     rules: {
-        "@typescript-eslint/no-unused-vars": [
-            2,
-            { args: "all", argsIgnorePattern: "^_" },
-        ],
-        "no-useless-escape": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-    },
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
+      "@typescript-eslint/ban-ts-comment": "off",
+      "no-prototype-builtins": "off",
+      "@typescript-eslint/no-empty-function": "off"
+    } ,
 };
